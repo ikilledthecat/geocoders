@@ -9,7 +9,7 @@ The geocode functions return (unicode_place_name, (float_lat, float_lon)) if
 the string can be geocoded, and (None, (None, None)) if it cannot.
 
 Currently supported: Google Geocoder, Yahoo! Geocoder, Yahoo! Placemaker,
-GeoNames and Multimap.
+GeoNames, Multimap and Yandex.
 
 Google:
 
@@ -58,6 +58,15 @@ Multimap:
 ('New York, State of New York, United States', ('43.00035', '-75.49990'))
 >>> geocode('oneuth')
 ('Omeath, Louth', ('54.08790', '-6.26070'))
+
+Yandex:
+
+>>> from geocoders.yandex import geocoder
+>>> geocode = geocoder('YANDEX-API-KEY')
+>>> geocode('new york')
+(u'США, Нью-Йорк', (40.802940999999997, -74.039783999999997))
+>>> geocode('kiev')
+(u'Украина, Киев', (50.451118000000001, 30.522300999999999))
 
 Reversing the order
 -------------------
