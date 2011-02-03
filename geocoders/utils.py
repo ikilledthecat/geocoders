@@ -45,11 +45,11 @@ def partial2(fn):
 
 def geocoder_factory(fn, takes_api_key=True):
     def make_geocoder(api_key = None, lonlat = False):
-        def geocoder(q):
+        def geocoder(q, **kwargs):
             args = [q]
             if takes_api_key:
                 args.append(api_key)
-            name, coords = fn(*args)
+            name, coords = fn(*args, **kwargs)
             if lonlat:
                 return name, (coords[1], coords[0])
             else:
