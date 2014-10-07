@@ -3,12 +3,12 @@ from utils import simplejson, geocoder_factory
 
 # http://api.yandex.ru/maps/geocoder/doc/desc/concepts/About.xml
 
-def geocode(q, api_key, ll=None, spn=None, rspn=None, plng=None):
+def geocode(q, api_key=None, ll=None, spn=None, rspn=None, plng=None):
     args = {
         'geocode': q,
-        'key': api_key,
         'results': 1,
         'format': 'json',
+        'lang': 'en-US',
     }
     if plng:
         args['plng'] = plng
@@ -20,7 +20,7 @@ def geocode(q, api_key, ll=None, spn=None, rspn=None, plng=None):
     if rspn and ll and spn:
         args['rspn'] = rspn
 
-    url = 'http://geocode-maps.yandex.ru/1.x/?%s' % urllib.urlencode(args)
+    url = 'http://geocode-maps.yandex.ru/1.x/?%s&lang=en-US' % urllib.urlencode(args)
     json = simplejson.load(urllib.urlopen(url))
 
     try:
@@ -33,4 +33,4 @@ def geocode(q, api_key, ll=None, spn=None, rspn=None, plng=None):
     except (KeyError, IndexError):
         return (None, (None, None))
 
-geocoder = geocoder_factory(geocode)
+geocoder = geocoder_factory(geocode, takes_api_key=False)
