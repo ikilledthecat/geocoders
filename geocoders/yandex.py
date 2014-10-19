@@ -1,5 +1,5 @@
 import urllib
-from utils import simplejson, geocoder_factory
+from .utils import simplejson, geocoder_factory
 
 # http://api.yandex.ru/maps/geocoder/doc/desc/concepts/About.xml
 

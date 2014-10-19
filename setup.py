@@ -5,7 +5,7 @@ from distutils.core import setup
 setup(
     name = 'Geocoders',
     version = '0.1',
-    author = 'Simon Willison',
-    url = 'http://github.com/simonw/geocoders',
+    author = 'Prasanjit Prakash',
+    url = 'http://github.com/ikilledthecat/geocoders',
     packages = ['geocoders'],
 )
